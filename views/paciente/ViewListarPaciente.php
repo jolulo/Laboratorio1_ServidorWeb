@@ -101,7 +101,7 @@ include_once("../../controllers/PacienteController.php");
                         <i class="fa fa-fw fa-eye"></i>
                       
                       </a>
-                      <a  href="ViewEditarPaciente.php">
+                      <a  href="ViewEditarPaciente.php?accion=consultar&id=$paciente->id">
                       <i class="fa fa-fw fa-pencil"></i>
                    
                     </a>

@@ -4,7 +4,7 @@ if(!isset($paciente)){
  header("location: ViewListarPaciente.php?accion=listar");
 }
 
-
+print_r($paciente);
 ?>
 
 <!DOCTYPE html>

@@ -109,7 +109,7 @@
           </div>
           <input type="submit" class="btn btn-primary btn-block" value="Registrar" >
          
-    <?php echo "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>
+   
         </form>
         
       </div>

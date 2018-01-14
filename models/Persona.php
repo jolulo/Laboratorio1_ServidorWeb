@@ -34,9 +34,20 @@ class Persona{
 
    }
 
-   function editarPersona(){
-
-   }
+   function editarPersona($id){
+    $sql ="update persona set identificacion=$this->identificacion, nombres = '$this->nombres',apellidos='$this->apellidos',correo='$this->correo', telefono='$this->telefono',direccion='$this->direccion',ciudad='$this->ciudad'".
+    ", departamento='$this->departamento',f_nacimiento='$this->f_nacimiento', sexo='$this->sexo', estado = $this->estado where id = $id";
+     $conexion = new Conexion();
+     echo $sql;
+    if($conexion->executeQuery($sql)){
+      
+      $conexion->close();
+        return true;
+     }else{
+       return false;
+     }
+  
+  }
 
    function buscarPersonaId($id){
 

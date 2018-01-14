@@ -26,7 +26,7 @@ function crearPaciente(){
 function buscarPacienteId($id){
 
         $conexion = new Conexion();
-        $sql = "select persona.*, paciente.id as id_paciente, paciente.num_seguro from persona inner join paciente on persona.id = paciente.id_persona and paciente.id = $id";
+        $sql = "select persona.*, paciente.id as id_paciente, paciente.num_seguro from persona inner join paciente on persona.id = paciente.id_persona and persona.id = $id";
         $res = $conexion->executeQuery($sql);
         $paciente = new Paciente();
         if ($obj = $res->fetch_object()) {
@@ -68,7 +68,17 @@ function listarPacientes(){
 
 }
 
-function editarPaciente(){}
+function editarPaciente(){
+  if($this->editarPersona($this->id_persona)){
+      $sql ="update paciente set num_seguro='$this->numero_seguro' where id_persona=$this->id_persona";
+      $conexion = new Conexion();
+      if($conexion->executeQuery($sql)){
+          $conexion->close();
+          return true;
+      }
+  }
+
+}
 
 function inactivarPaciente($id){
     $conexion = new Conexion();
