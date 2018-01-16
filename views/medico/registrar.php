@@ -52,7 +52,7 @@ include_once "../navsuperior.php";
         <div class="card-header">Registro de Médicos</div>
         <div class="card-body">
 
-      <form action="../../controllers/medicoController.php?accion=registrar" method="post">
+      <form action="../../controllers/medicoController.php?accionm=registrar" method="post">
         <div class="form-group">
             <div class="form-row">
             <div class="col-md-2">

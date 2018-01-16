@@ -16,7 +16,7 @@ print_r($paciente);
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>SB Admin - Start Bootstrap Template</title>
+  <title>Sistema de Citas Médicas</title>
   <!-- Bootstrap core CSS-->
   <link href="../../resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
@@ -30,7 +30,7 @@ print_r($paciente);
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+    <a class="navbar-brand" href="<?php echo $_SESSION['baseurl'] ?>">Sistema de Citas Médicas</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -123,7 +123,7 @@ print_r($paciente);
               </div>
               <div class="col-md-6">
                 <label for="direccion">Sexo</label>
-                <input type ="text" value="<?php if($paciente->sexo =='M'){echo "Masculino";}else{ echo "Femenino";} ?>" readonly>
+                <input class="form-control"  type ="text" value="<?php if($paciente->sexo =='M'){echo "Masculino";}else{ echo "Femenino";} ?>" readonly>
                
               </div>
             </div>

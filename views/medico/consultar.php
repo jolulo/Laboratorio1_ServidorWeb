@@ -17,6 +17,19 @@
   <link href="../../resources/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="../../resources/css/sb-admin.css" rel="stylesheet">
+
+  <script>
+   var id=0;
+   function asignarId(i){
+    id = i;
+
+   }
+
+   function eliminarMedico(){
+    location.href="../../controllers/medicoController.php?accionm=inactivar&id="+id;
+
+   }
+  </script>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -59,9 +72,10 @@
 				    <tr>
 				      <th>ID</th>
 				      <th>Nombre</th>
-				      <th>Descripción</th>
-              <th>Modificar</th>
-              <th>Eliminar</th>
+              <th>Especialidad</th>
+              <th>Estado</th>
+              <th>Accion</th>
+          
 				    </tr>
           </thead><tbody>";
           while ($row = $result->fetch_assoc()) {
@@ -69,8 +83,15 @@
             echo "<td>" . $row['identificacion'] . "</td>";
             echo "<td>" . $row['nombres'] . " " . $row['apellidos'] . "</td>";
             echo "<td>" . $row['especialidad'] . "</td>";
-            echo "<td><a href='modificar.php?id=" . $row['id'] . "' class='btn btn-primary'>Modificar</a></td>";
-            echo "<td><a href='eliminar.php?id=" . $row['id'] . "' class='btn btn-danger'>Eliminar</a></td>";
+            if($row['estado'] == 1){
+              echo "<td>Activo</td>";
+            }else{
+              echo "<td>Inactivo</td>";
+            }
+            echo "<td><a href='ver.php?id=" . $row['id'] . "&accionm=consultar' > <i class='fa fa-fw fa-eye'></i></a>";
+            echo "<a href='modificar.php?id=" . $row['id'] . "&accionm=consultar' > <i class='fa fa-fw fa-pencil'></i></a>";
+            echo "<a href='#' data-toggle='modal' data-target='#exampleModal' onClick='asignarId(" . $row['id'] . ");'>
+            <i class='fa fa-fw fa-trash'></i>";
             echo "</tr>";
           }
           echo "</tbody></table>";
@@ -89,24 +110,24 @@ include_once "../pie.php";
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
-    <!-- Logout Modal-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
-          </div>
-        </div>
-      </div>
+<!-- Logout Modal-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Inactivar Médico</h5>
+      <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
     </div>
+    <div class="modal-body">¿Esta seguro de inactivar el Médico?.</div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+      <a class="btn btn-primary" href="#" onClick="eliminarMedico();">Inactivar</a>
+    </div>
+  </div>
+</div>
+</div>
     <!-- Bootstrap core JavaScript-->
     <script src="../../resources/vendor/jquery/jquery.min.js"></script>
     <script src="../../resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
