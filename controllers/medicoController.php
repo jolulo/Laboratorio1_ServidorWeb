@@ -65,8 +65,6 @@ include_once(dirname(__FILE__)."/../models/medicoModel.php");
                 echo "Error";
             }
         }
-        
-      
     }
     
     class medicoController{

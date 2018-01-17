@@ -15,24 +15,16 @@
                 }
             
             }
-
             function executeQuery($sql){
-                
                  $res = $this->mysqli->query($sql);
                 return $res;
-                            
-                          
             }
                         
              function close(){
                  $this->mysqli->close();
             }
-
             function lastId(){
                 return $this->mysqli->insert_id;
             }
-        }
-
-      
-		
+        }	
 	?>

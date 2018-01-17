@@ -26,7 +26,7 @@ function crearPaciente(){
 function buscarPacienteId($id){
 
         $conexion = new Conexion();
-        $sql = "select persona.*, paciente.id as id_paciente, paciente.num_seguro from persona inner join paciente on persona.id = paciente.id_persona and persona.id = $id";
+        $sql = "select persona.*, paciente.id as id_paciente, paciente.num_seguro from persona inner join paciente on persona.id = paciente.id_persona and (persona.id = $id or paciente.id =$id)";
         $res = $conexion->executeQuery($sql);
         $paciente = new Paciente();
         if ($obj = $res->fetch_object()) {

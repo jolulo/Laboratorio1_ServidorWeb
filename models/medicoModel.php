@@ -24,7 +24,8 @@
         }
         public function consultarUnMedico($id){
             $this->conn = new Conexion(); 
-            $sql = "SELECT p.*, m.id as id_medico, m.especialidad FROM persona p INNER JOIN medico m ON m.id_persona = p.id  AND p.id = " . $id;
+            $sql = "SELECT p.*, m.id as id_medico, m.especialidad FROM persona p INNER JOIN medico m ON m.id_persona = p.id  AND (p.id = " . $id." or m.id =$id)";
+      
             $res = $this->conn->executeQuery($sql);
             if($medico =  $res->fetch_object()){
                 return $medico;
@@ -33,7 +34,7 @@
            
         }
         public function consultarTodosMedicos(){
-            $sql = "SELECT p.id, p.identificacion, p.nombres, p.apellidos,p.estado, m.especialidad FROM persona p INNER JOIN medico m ON m.id_persona = p.id ";
+            $sql = "SELECT p.id, p.identificacion, p.nombres, p.apellidos,p.estado, m.especialidad,m.id as id_medico FROM persona p INNER JOIN medico m ON m.id_persona = p.id ";
             $res = $this->conn->executeQuery($sql);
             return $res;
         }
